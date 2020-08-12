@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <HelloWorld count="0"/>
+    <CombatCounter count="0"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CombatCounter from './components/CombatCounter.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    CombatCounter
   }
 }
 </script>

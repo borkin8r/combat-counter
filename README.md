@@ -1,4 +1,4 @@
-# hm-combat-manager
+# combat counter
 
 ## Project setup
 ```
