@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <CombatCounter count="0"/>
+    <CombatCounter />
   </div>
 </template>
 

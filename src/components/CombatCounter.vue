@@ -3,21 +3,13 @@
     <h1>Combat Counter</h1>
   <div>
     <label>Count: {{ count }}</label>
-    <button>+</button>
-    <button>-</button>
+    <button v-on:click="incrementCount">+</button>
+    <button v-on:click="decrementCount">-</button>
   </div>
     <ul>
-      <li>
-        <label>Name: 
-          <input type="text">
-        </label>
-        <label>Action: 
-          <input type="text">
-        </label>
-        <label>Seconds Until Action: 
-          <input type="text">
-        </label>
-        <button>X</button>
+      <li v-for="character in characters"
+        v-bind:key="character.name"> <!-- TODO generate unique key -->
+        <character :character="character" />
       </li>
     </ul>
     <button>Add Combatant</button>
@@ -25,10 +17,26 @@
 </template>
 
 <script>
+import Character from './Character.vue'
+
 export default {
-  name: 'Combat Counter',
-  props: {
-    count: Number
+  name: 'CombatCounter',
+  components: {
+    Character
+  },
+  methods: {
+    incrementCount: function () {
+      this.count = (this.count * 1) + 1 // coerce count as a number rather than string concatenation
+    },
+    decrementCount: function () {
+      this.count -= 1
+    }
+  },
+  data: function() {
+    return {
+      count: 0,
+      characters: [{name: "adventure", action: "attack", secondsLeft: 5}]
+    }
   }
 }
 </script>
