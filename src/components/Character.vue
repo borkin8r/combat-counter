@@ -43,4 +43,7 @@ export default {
     .character {
         display: inline;
     }
+    label {
+        margin-left: 5px;
+    }
 </style>

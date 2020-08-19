@@ -1,7 +1,7 @@
 <template>
   <div class="combat-counter">
     <h1>Combat Counter</h1>
-  <div>
+  <div class="counter">
     <label>Count: {{ count }}</label>
     <button v-on:click="incrementCount">+</button>
     <button v-on:click="decrementCount">-</button>
@@ -75,7 +75,14 @@ li {
   padding: 0.5rem;
   margin-bottom: 5px;
 }
+li > button {
+  margin-left: 5px;
+}
 a {
   color: #42b983;
+}
+
+.counter > label, .counter > button {
+  margin-left: 5px;
 }
 </style>
