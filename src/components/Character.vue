@@ -9,7 +9,6 @@
         <label>Seconds Until Action: 
             <input v-bind:value="character.secondsLeft" type="number"/>
         </label>
-        <button v-on:click="removeSelf">X</button>
     </div>
 </template>
 
@@ -24,7 +23,7 @@ export default {
         }
     },
     methods: {
-        removeSelf: function () {}
+        
     }
 }
 </script>
