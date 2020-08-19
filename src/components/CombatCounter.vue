@@ -9,7 +9,11 @@
     <ul>
       <li v-for="(character, index) in characters"
         v-bind:key="character.id"> <!-- TODO generate unique key -->
-        <character :character="character" />
+        <character :character="character" 
+                  v-on:update-seconds-left="character.secondsLeft = $event"
+                  v-on:update-name="character.name = $event"
+                  v-on:update-action="character.action = $event"
+        ></character>
         <button v-on:click="removeCharacter(index)">X</button>
       </li>
     </ul>
@@ -69,6 +73,7 @@ ul {
 li {
   border: solid 1px;
   padding: 0.5rem;
+  margin-bottom: 5px;
 }
 a {
   color: #42b983;
