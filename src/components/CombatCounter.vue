@@ -27,9 +27,15 @@ export default {
   methods: {
     incrementCount: function () {
       this.count = (this.count * 1) + 1 // coerce count as a number rather than string concatenation
+      for (let character of this.characters) {
+        character.secondsLeft -= 1
+      }
     },
     decrementCount: function () {
       this.count -= 1
+      for (let character of this.characters) {
+        character.secondsLeft = (character.secondsLeft * 1) + 1
+      }
     }
   },
   data: function() {
