@@ -46,4 +46,5 @@ export default {
     label {
         margin-left: 5px;
     }
+
 </style>

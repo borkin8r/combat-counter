@@ -1,13 +1,15 @@
 <template>
   <div class="combat-counter">
     <h1>Combat Counter</h1>
-  <div class="counter">
-    <label>Count: {{ count }}</label>
-    <button v-on:click="incrementCount">+</button>
-    <button v-on:click="decrementCount">-</button>
-  </div>
-    <ul>
+    <div class="counter">
+      <label>Count: {{ count }}</label>
+      <button v-on:click="incrementCount">+</button>
+      <button v-on:click="decrementCount">-</button>
+    </div>
+    <ul> <!-- TODO: turn into table with column headers name, action, etc -->
       <li v-for="(character, index) in characters"
+        v-bind:class="{ ready: character.secondsLeft <= 0 }"
+        class="semantic"
         v-bind:key="character.id"> <!-- TODO generate unique key -->
         <character :character="character" 
                   v-on:update-seconds-left="character.secondsLeft = $event"
@@ -80,6 +82,9 @@ li > button {
 }
 a {
   color: #42b983;
+}
+.ready {
+    background-color: red;
 }
 
 .counter > label, .counter > button {
