@@ -1,17 +1,17 @@
 <template>
     <div class="character">
-        <label>Name: 
+        <td>
             <input v-bind:value="character.name"
             v-on:input="updateName($event.target.value)" type="text"/>
-        </label>
-        <label>Action: 
+        </td>
+        <td> 
             <input v-bind:value="character.action"
             v-on:input="updateAction($event.target.value)" type="text"/>
-        </label>
-        <label>Seconds Until Action: 
+        </td>
+        <td>
             <input v-bind:value="character.secondsLeft"
             v-on:input="updateSecondsLeft($event.target.value)" type="number"/>
-        </label>
+        </td>
     </div>
 </template>
 

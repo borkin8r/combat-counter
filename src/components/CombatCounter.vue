@@ -1,36 +1,46 @@
 <template>
   <div class="combat-counter">
-    <h1>Combat Counter</h1>
     <div class="counter">
-      <label>Count: {{ count }}</label>
-      <button v-on:click="incrementCount">+</button>
-      <button v-on:click="decrementCount">-</button>
+      <h1>Count: {{ count }}</h1>
+      <button v-on:click="incrementCount">Advance Time 1 Second</button>
+      <button v-on:click="decrementCount">Rewind Time 1 Second</button>
     </div>
-    <ul> <!-- TODO: turn into table with column headers name, action, etc -->
-      <li v-for="(character, index) in characters"
-        v-bind:class="{ ready: character.secondsLeft <= 0 }"
-        class="semantic"
-        v-bind:key="character.id"> <!-- TODO generate unique key -->
-        <character :character="character" 
-                  v-on:update-seconds-left="character.secondsLeft = $event"
-                  v-on:update-name="character.name = $event"
-                  v-on:update-action="character.action = $event"
-        ></character>
-        <button v-on:click="removeCharacter(index)">X</button>
-      </li>
-    </ul>
-    <button v-on:click="addCharacter()">Add Combatant</button>
+    <div class="controls">
+      <button class="success" v-on:click="addCharacter()">Add Combatant</button>
+    </div>
+    <table class="primary">
+      <thead>
+        <th>Name</th>
+        <th>Action</th>
+        <th>Seconds Left</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr v-for="(character, index) in characters"
+            v-bind:class="{ ready: character.secondsLeft <= 0 }"
+            v-bind:key="character.id">
+          <td>
+            <input v-model="character.name"
+            v-on:input="updateName($event.target.value)" type="text"/>
+          </td>
+          <td> 
+              <input v-model="character.action"
+              v-on:input="updateAction($event.target.value)" type="text"/>
+          </td>
+          <td>
+              <input v-model="character.secondsLeft"
+              v-on:input="updateSecondsLeft($event.target.value)" type="number"/>
+          </td>
+          <button class="error" v-on:click="removeCharacter(index)">X</button>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
-import Character from './Character.vue'
-
 export default {
   name: 'CombatCounter',
-  components: {
-    Character
-  },
   methods: {
     incrementCount: function () {
       this.count++ // coerce count as a number rather than string concatenation
@@ -66,28 +76,27 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
-ul {
-  display: block;
-  list-style-type: none;
-  padding: 0.5rem;
-  border: solid 1px;
-}
-li {
-  border: solid 1px;
-  padding: 0.5rem;
-  margin-bottom: 5px;
-}
-li > button {
-  margin-left: 5px;
-}
 a {
   color: #42b983;
 }
 .ready {
     background-color: red;
 }
-
+table {
+  display: initial;
+}
+th {
+  text-align: center;
+}
+tr, thead {
+  border: 1px solid black;
+}
 .counter > label, .counter > button {
   margin-left: 5px;
 }
+.counter > label {
+  font-weight: bold;
+  font-size: large;
+}
+
 </style>
