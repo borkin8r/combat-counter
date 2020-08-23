@@ -1,5 +1,8 @@
 # combat counter
 
+## Summary
+A simple app to help track when characters complete their action for the HackMaster Role Playing Game by Kenzer & Company 
+
 ## Project setup
 ```
 yarn install
